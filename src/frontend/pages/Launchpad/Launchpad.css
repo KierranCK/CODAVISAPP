@@ -1,0 +1,39 @@
+.launchpad {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.launchpad-title-pane {
+  z-index: 10;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: -webkit-gradient(linear, left top, right top, color-stop(86%, black), color-stop(89%, rgba(0, 0, 0, 0.8)), color-stop(92%, rgba(0, 0, 0, 0.6)), color-stop(95%, rgba(0, 0, 0, 0.5)), color-stop(97%, rgba(0, 0, 0, 0.3)), to(transparent));
+  background: linear-gradient(90deg, black 86%, rgba(0, 0, 0, 0.8) 89%, rgba(0, 0, 0, 0.6) 92%, rgba(0, 0, 0, 0.5) 95%, rgba(0, 0, 0, 0.3) 97%, transparent);
+  width: 130%;
+  -webkit-transform: translateX(100px);
+          transform: translateX(100px);
+  height: 100vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 0.8em;
+}
+
+.visualise {
+  z-index: -10;
+}
+
+.visualise-image img {
+  height: 100vh;
+  z-index: -10;
+  right: 0;
+}
+/*# sourceMappingURL=Launchpad.css.map */

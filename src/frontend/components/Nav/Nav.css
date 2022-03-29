@@ -1,0 +1,39 @@
+.nav {
+  background: rgba(255, 255, 255, 0.1);
+  padding-top: 5em;
+  height: 100vh;
+}
+
+.nav .nav-link {
+  text-decoration: none;
+  color: white;
+  font-size: 0.8em;
+  padding: 1em 8em 1em 3em;
+  position: relative;
+}
+
+.nav .nav-link span {
+  margin-right: 0.5em;
+}
+
+.nav .nav-link.active::before {
+  background: #ffb800;
+}
+
+.nav .nav-link:hover {
+  background: rgba(255, 184, 0, 0.5);
+}
+
+.nav .nav-link::before {
+  content: "";
+  width: 0.5em;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.nav .nav-link a {
+  color: white;
+}
+/*# sourceMappingURL=Nav.css.map */

@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap");
+
+$neon-pink: hsl(323, 100%, 49%);
+$bg: hsl(323, 21%, 16%);
+$text-glow: 0 0 0.45em $neon-pink, 0 0 0.15em rgba(70, 35, 35, 0.2);
+$obj-glow: 0 0 0.5em 0 $neon-pink, inset 0 0 0.5em 0 $neon-pink;
+
+.spinner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $neon-pink;
+}
+
+.spinning-loader {
+  max-width: 15rem;
+  width: 100%;
+  height: auto;
+  stroke-linecap: round;
+}
+
+.spinning-loader circle {
+  fill: none;
+  stroke-width: 4;
+  animation-name: preloader;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  transform-origin: 170px 170px;
+  opacity: 0.2;
+
+  &:nth-of-type(1) {
+    stroke-dasharray: 80px;
+  }
+
+  &:nth-of-type(2) {
+    stroke-dasharray: 60px;
+  }
+
+  &:nth-of-type(3) {
+    stroke-dasharray: 30px;
+  }
+
+  &:nth-of-type(4) {
+    stroke-dasharray: 10px;
+  }
+
+  @for $i from 1 through 4 {
+    &:nth-of-type(#{$i}) {
+      animation-delay: -#{$i * 0.15}s;
+    }
+  }
+}
+
+@keyframes preloader {
+  50% {
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+}

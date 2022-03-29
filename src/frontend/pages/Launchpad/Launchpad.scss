@@ -1,0 +1,35 @@
+.launchpad {
+  height: 100%;
+  display: flex;
+}
+
+.launchpad-title-pane {
+  z-index: 10;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    90deg,
+    black 86%,
+    rgba(0, 0, 0, 0.8) 89%,
+    rgba(0, 0, 0, 0.6) 92%,
+    rgba(0, 0, 0, 0.5) 95%,
+    rgba(0, 0, 0, 0.3) 97%,
+    transparent
+  );
+  width: 130%;
+  transform: translateX(100px);
+  height: 100vh;
+  justify-content: center;
+  gap: 0.8em;
+}
+
+.visualise {
+  z-index: -10;
+}
+
+.visualise-image img {
+  height: 100vh;
+  z-index: -10;
+  right: 0;
+}

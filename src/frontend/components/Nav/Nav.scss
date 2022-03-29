@@ -1,0 +1,43 @@
+$orange: rgb(255, 184, 0);
+$orange-transparent: rgba(255, 184, 0, 0.5);
+
+.nav {
+  background: rgba(255, 255, 255, 0.1);
+  padding-top: 5em;
+  height: 100vh;
+
+  .nav-link {
+    text-decoration: none;
+    color: white;
+    font-size: 0.8em;
+    padding: 1em 8em 1em 3em;
+    position: relative;
+
+    & span {
+      margin-right: 0.5em;
+    }
+
+    &.active {
+      &::before {
+        background: $orange;
+      }
+    }
+
+    &:hover {
+      background: $orange-transparent;
+    }
+
+    &::before {
+      content: "";
+      width: 0.5em;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    & a {
+      color: white;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+.table {
+  color: white;
+  font-size: 0.7em;
+  max-width: 1000px;
+  display: block;
+  height: 200px;
+  width: 50%;
+  overflow-y: scroll;
+
+  thead {
+    position: sticky;
+  }
+
+  tr {
+    padding: 10em 1em;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: white;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: orange;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgb(179, 101, 0);
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .table {
+    width: 100%;
+  }
+}

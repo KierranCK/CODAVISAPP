@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState, useEffect, useCallback, component } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Loading from './frontend/components/Loading/Loading';
+import Launchpad from './frontend/pages/Launchpad/Launchpad';
+import Dashboard from './frontend/pages/Dashboard/Dashboard';
+import Report from './frontend/pages/Report/Report';
+// import About from './frontend/pages/About/About';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+     <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<Launchpad />} />
+          <Route exact path="/dashboard" element={<Dashboard />} />
+          <Route exact path="/report" element={<Report />} />
+          {/* <Route exact path="/about" element={<About />} />  */}
+          <Route path="*" element={<Launchpad />} />
+        </Routes>
+      </BrowserRouter>
+
+    </>
   );
 }
 

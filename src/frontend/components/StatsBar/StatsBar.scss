@@ -1,0 +1,41 @@
+// <div className='stats-bar'>
+// <div className='stat'>
+//     <p className='stat-label'>Active</p>
+//     <p className='stat-figure'>5,361,549</p>
+// </div>
+// </div>
+
+.stats-bar {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 1em 4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  border-right: 0.01em rgba(255, 255, 255, 0.453) solid;
+  padding: 0 3em;
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.stat-label {
+  font-weight: 500;
+  font-size: 0.6em;
+  margin: 0;
+}
+
+.stat-figure {
+  font-weight: 500;
+  font-size: 1em;
+  margin: 0;
+}
+
+.stats-bar {
+}
