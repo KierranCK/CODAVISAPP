@@ -27,16 +27,13 @@
       -ms-flex-pack: center;
           justify-content: center;
   gap: 0.8em;
+  overflow: hidden;
 }
 
 .launchpad-title-pane::after {
   content: "";
   background: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(75%, black), to(transparent));
   background: linear-gradient(90deg, transparent, black 75%, transparent);
-  position: absolute;
-  height: 100vh;
-  width: 50em;
-  right: -150px;
   pointer-events: none;
 }
 
@@ -49,4 +46,4 @@
 button {
   padding: 0.5em 2.5em !important;
 }
-/*# sourceMappingURL=Launchpad.css.map */
+/*# sourceMappingURL=Error.css.map */

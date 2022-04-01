@@ -10,16 +10,17 @@ import config from '../../config.js'
 import Header from '../../components/Header/Header'
 import PieChart from '../../components/PieChart/PieChart'
 import BarChart from '../../components/BarChart/BarChart'
+import { Button, Row, Col, Dropdown } from 'react-bootstrap';
 
 const Dashboard = () => {
 
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState(null);
     const [lastUpdated, setLastUpdated] = useState(null);
-    const [highestCases, setHighestCases] = useState(null);
-    const [topFiveCases, setTopFiveCases] = useState(null);
-    const [topFiveDeaths, setTopFiveDeaths] = useState(null);
-    const [highestDeaths, setHighestDeaths] = useState(null);
+    const [highestCases, setHighestCases] = useState([]);
+    const [topFiveCases, setTopFiveCases] = useState({});
+    const [topFiveDeaths, setTopFiveDeaths] = useState({});
+    const [highestDeaths, setHighestDeaths] = useState([]);
     const headers = ["#", "Region", "Active", "Critical", "New Cases", "Recovered", "New Deaths", "Total Cases", "Total Deaths"];
     const nullValue = "0";
 
@@ -35,20 +36,27 @@ const Dashboard = () => {
             }
         }
         axios.request(options).then(res => {
-            console.log(res.data);
-            let countryData = res.data.response;
+            console.log(res.data.response);
+
+            let countryData1 = res.data.response;
+            let countryData2 = res.data.response;
+            let countryData3 = res.data.response;
+
+            console.log(countryData1)
+            console.log(countryData2)
+            console.log(countryData3)
 
             //sort data in decsending active case order
-            countryData.sort((a, b) => {
+            const sortedByCases = countryData2.sort((a, b) => {
                 return b.cases.active - a.cases.active;
             })
-            setData(countryData);
-            setHighestCases(countryData);
+            setData(countryData1);
+            setHighestCases(sortedByCases);
 
-            countryData.sort((a, b) => {
+            const sortedByDeaths = countryData3.sort((a, b) => {
                 return b.deaths.total - a.deaths.total;
             })
-            setHighestDeaths(countryData);
+            setHighestDeaths(sortedByDeaths);
 
 
             //setDate for 'last updated' value
@@ -69,25 +77,34 @@ const Dashboard = () => {
         });
     }, [])
 
-    //function to return object containing lists of values and categories for top 5 regions for death rate
-    const topFive = (data, type)=> {
+    useEffect(() => {
+        const topFive = highestCases.splice(1, 5);
         let regions = [];
         let values = [];
-        let five = data.slice(1, 6);
-        console.log(five);
-        if (type === "deaths") {
-            five.map(datapoint => {
-                regions.push(datapoint.country)
-                values.push(datapoint.deaths.total);
-            })
-        } else if (type === "cases") {
-            five.map(datapoint => {
-                regions.push(datapoint.country)
-                values.push(datapoint.cases.active);
-            })
-        }
-        return { regions: regions, values: values }
-    }
+        topFive.map(datapoint => {
+            regions.push(datapoint.country);
+            values.push(datapoint.cases.active);
+        })
+
+        setTopFiveCases({categories: regions, values: values });
+        console.log(topFiveCases);
+    }, [highestCases])
+
+    useEffect(() => {
+        const topFive = highestDeaths.splice(1, 5);
+        let regions = [];
+        let values = [];
+        topFive.map(datapoint => {
+            regions.push(datapoint.country);
+            values.push(datapoint.deaths.total);
+        })
+
+        setTopFiveDeaths({categories: regions, values: values });
+    }, [highestDeaths])
+
+    useEffect(()=> {
+        console.log("data: " + data)
+    }, [data])
 
 
   return (
@@ -101,34 +118,52 @@ const Dashboard = () => {
  <div className='centre'>
  <Loading />
 </div>:
-<div class="container overflow-hidden">
-  <div class="row">
+<div className="container overflow-hidden">
+  <Row>
 
-    <div class="col">
-     <div class="p-3 rounded bg-dark">
+    <Col>
+     <div className="p-3 rounded bg-dark">
          <p>Global Stats</p>
          <div className='text-center'>
          <StatsBar data={data[0]}/>    
          </div>
     </div>
-    </div>
+    </Col>
 
-  </div>
-    
+  </Row>
 
-  <div class="row">
-    <div class="col gy-4">
-    <div class="p-3 rounded bg-dark">
+
+  <Row>
+    <Col className="gy-4">
+    <div className="p-3 rounded bg-dark">
         <p>Global Stats By Region</p>
+        <Row>
+            <Col className='gy-1'>
+
+            {/* <Dropdown>
+  <Dropdown.Toggle variant="success" id="dropdown-basic">
+    Dropdown Button
+  </Dropdown.Toggle>
+
+  <Dropdown.Menu>
+    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+  </Dropdown.Menu>
+</Dropdown> */}
+            </Col>
+
+        </Row>
+
             <Table 
             headers={headers}
             data={data}
             nullValue={nullValue}
             />     
     </div>
-    </div>
-    <div class="col gy-4">
-    <div class="p-3 rounded bg-dark">
+    </Col>
+    <Col className="gy-4">
+    <div className="p-3 rounded bg-dark">
         
         <p>Global Chart</p>
         <div className='d-flex justify-content-center'>
@@ -140,42 +175,41 @@ const Dashboard = () => {
         </div>
 
     </div>
-    </div>
-  </div>
+    </Col>
+  </Row>
 
-  <div class="row">
+  <Row>
     
-    <div class="col gy-4">
-    <div class="p-3 rounded bg-dark">
+    <Col className="gy-4">
+    <div className="p-3 rounded bg-dark">
         
         <p>Cases</p>
         <div className='d-flex justify-content-center'>
         <BarChart
-        label={"Top Five Regions for deaths"}
-        categories={topFive(highestCases, "cases").regions}
-        values={topFive(highestCases, "cases").values}
+        label={"Cases"}
+        categories={topFiveCases.categories}
+        values={topFiveCases.values}
         />
         </div>
-
     </div>
-    </div>
+    </Col>
 
-    <div class="col gy-4">
-    <div class="p-3 rounded bg-dark">
+    <Col className="gy-4">
+    <div className="p-3 rounded bg-dark">
         
         <p>Deaths</p>
         <div className='d-flex justify-content-center'>
         <BarChart
-        label={"Top Five Regions for deaths"}
-        categories={topFive(highestDeaths, "deaths").regions}
-        values={topFive(highestDeaths, "deaths").values}
+        label={"Deaths"}
+        categories={topFiveDeaths.categories}
+        values={topFiveDeaths.values}
         />
         </div>
 
     </div>
-    </div>
+    </Col>
 
-  </div>
+  </Row>
 
 
 </div>

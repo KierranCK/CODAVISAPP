@@ -5,6 +5,7 @@ import Launchpad from './frontend/pages/Launchpad/Launchpad';
 import Dashboard from './frontend/pages/Dashboard/Dashboard';
 import Report from './frontend/pages/Report/Report';
 import About from './frontend/pages/About/About';
+import Error from './frontend/pages/Error/Error';
 
 function App() {
   return (
@@ -15,8 +16,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/report" element={<Report />} />
           <Route path="/about" element={<About />} />
-          {/* <Route exact path="/about" element={<About />} />  */}
-          <Route path="*" element={<Launchpad />} />
+          <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
 

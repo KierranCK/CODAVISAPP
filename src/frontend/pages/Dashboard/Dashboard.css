@@ -1,23 +1,15 @@
 .centre {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  position: absolute;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  gap: 2em;
-}
-
-.col:nth-child() {
-  border-radius: 5px;
-  background: red;
+  top: 0;
+  left: 12em;
+  width: calc(100% - 12em);
+  height: 100%;
 }
 
 .bg-dark {
-  background: rgba(31, 31, 31, 0.24) !important;
+  background: rgba(0, 0, 0, 0.227) !important;
 }
 /*# sourceMappingURL=Dashboard.css.map */

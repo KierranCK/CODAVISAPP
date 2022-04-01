@@ -1,6 +1,7 @@
 .launchpad {
   height: 100%;
   display: flex;
+  position: relative;
 }
 
 .launchpad-title-pane {
@@ -8,29 +9,37 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(0, 0, 0, 1) 89%,
-    rgba(0, 0, 0, 0.8) 92%,
-    rgba(0, 0, 0, 0.5) 95%,
-    rgba(0, 0, 0, 0.3) 97%,
-    rgba(0, 0, 0, 0.1) 99%,
-    transparent
-  );
-  width: 130%;
+  position: relative;
+  left: -7.8em;
+  padding-left: 5em;
+  width: 100%;
   transform: translateX(100px);
   height: 100vh;
   justify-content: center;
   gap: 0.8em;
-}
 
-.visualise {
-  z-index: -10;
+  &::after {
+    content: "";
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(0, 0, 0) 75%,
+    transparent
+  );
+    position: absolute;
+    height: 100vh;
+    width: 50em;
+    right: -150px;
+    pointer-events: none;
+  }
 }
 
 .visualise-image img {
   height: 100vh;
   z-index: -10;
   right: 0;
+}
+
+button {
+  padding: 0.5em 2.5em !important;
 }
