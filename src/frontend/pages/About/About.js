@@ -5,12 +5,14 @@ import Layout from '../../components/Layout/Layout'
 import Table from '../../components/Table/Table'
 import StatsBar from '../../components/StatsBar/StatsBar'
 import Button from "../../components/Button/Button";
+import Header from "../../components/Header/Header";
 
 const About = () => {
 
   return (
       <Layout>
-        <h2 className='page-title'>Report</h2>
+        <Header title="About" />
+
         <div className='centre'>
               
         </div>
@@ -21,4 +23,4 @@ const About = () => {
   )
 }
 
-export default Dashboard
+export default About

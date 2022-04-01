@@ -1,0 +1,12 @@
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.header .timestamp {
+  margin: 0;
+  margin-left: auto;
+}
+/*# sourceMappingURL=Header.css.map */

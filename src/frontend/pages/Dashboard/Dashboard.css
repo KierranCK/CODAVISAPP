@@ -11,4 +11,13 @@
           flex-direction: column;
   gap: 2em;
 }
+
+.col:nth-child() {
+  border-radius: 5px;
+  background: red;
+}
+
+.bg-dark {
+  background: rgba(31, 31, 31, 0.24) !important;
+}
 /*# sourceMappingURL=Dashboard.css.map */

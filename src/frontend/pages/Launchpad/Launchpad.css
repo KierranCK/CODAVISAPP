@@ -15,8 +15,8 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background: -webkit-gradient(linear, left top, right top, color-stop(86%, black), color-stop(89%, rgba(0, 0, 0, 0.8)), color-stop(92%, rgba(0, 0, 0, 0.6)), color-stop(95%, rgba(0, 0, 0, 0.5)), color-stop(97%, rgba(0, 0, 0, 0.3)), to(transparent));
-  background: linear-gradient(90deg, black 86%, rgba(0, 0, 0, 0.8) 89%, rgba(0, 0, 0, 0.6) 92%, rgba(0, 0, 0, 0.5) 95%, rgba(0, 0, 0, 0.3) 97%, transparent);
+  background: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(89%, black), color-stop(92%, rgba(0, 0, 0, 0.8)), color-stop(95%, rgba(0, 0, 0, 0.5)), color-stop(97%, rgba(0, 0, 0, 0.3)), color-stop(99%, rgba(0, 0, 0, 0.1)), to(transparent));
+  background: linear-gradient(90deg, transparent, black 89%, rgba(0, 0, 0, 0.8) 92%, rgba(0, 0, 0, 0.5) 95%, rgba(0, 0, 0, 0.3) 97%, rgba(0, 0, 0, 0.1) 99%, transparent);
   width: 130%;
   -webkit-transform: translateX(100px);
           transform: translateX(100px);

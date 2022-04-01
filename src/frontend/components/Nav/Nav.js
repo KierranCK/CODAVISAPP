@@ -25,19 +25,19 @@ const Nav = () => {
 
 <ul className='nav flex-column'>
     <li className='nav-item'>
-        <NavLink to="/dashboard" className='nav-link' activeClassName="active">
+        <NavLink to="/dashboard" className='nav-link' activeclassname="active">
         {/* <span class="material-icons-outlined">analytics</span> */}
         Dashboard
         </NavLink>
     </li>
     <li className='nav-item'>
-        <NavLink to="/report" className='nav-link' activeClassName="active">
+        <NavLink to="/report" className='nav-link' activeclassname="active">
         {/* <span class="material-icons-outlined ">summarize</span> */}
             Report
             </NavLink>
     </li>
     <li className='nav-item'>
-        <NavLink to="/dashboard" className='nav-link' activeClassName="active">
+        <NavLink to="/about" className='nav-link' activeclassname="active">
         {/* <span class="material-icons-outlined">info</span> */}
             About
             </NavLink>

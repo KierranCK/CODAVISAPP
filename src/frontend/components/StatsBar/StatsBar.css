@@ -1,43 +1,18 @@
-.stats-bar {
-  background: rgba(255, 255, 255, 0.15);
-  padding: 1em 4em;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  max-width: 1000px;
-}
-
 .stat {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  border-right: 0.01em rgba(255, 255, 255, 0.453) solid;
+  border-left: 0.02em rgba(255, 255, 255, 0.2) solid;
   padding: 0 3em;
-}
-
-.stat:last-child {
-  border-right: none;
+  text-align: left;
 }
 
 .stat-label {
   font-weight: 500;
-  font-size: 0.6em;
+  font-size: 0.7em;
   margin: 0;
 }
 
 .stat-figure {
   font-weight: 500;
-  font-size: 1em;
+  font-size: 1.4em;
   margin: 0;
 }
 /*# sourceMappingURL=StatsBar.css.map */

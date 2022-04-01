@@ -1,35 +1,40 @@
 .table {
   color: white;
   font-size: 0.7em;
-  max-width: 1000px;
   display: block;
-  height: 200px;
-  width: 50%;
-  overflow-y: scroll;
-
-  thead {
-    position: sticky;
-  }
+  max-height: 30em;
+  padding-right: 10px;
 
   tr {
     padding: 10em 1em;
   }
 
-  &::-webkit-scrollbar-track {
-    background-color: white;
+  th {
+    position: sticky;
   }
 
-  &::-webkit-scrollbar-thumb {
-    background: orange;
+  td.green {
+    color: green !important;
   }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: rgb(179, 101, 0);
+  td.red {
+    color: red !important;
   }
 }
+.table-div {
+  overflow-y: scroll;
+}
 
-@media screen and (max-width: 750px) {
-  .table {
-    width: 100%;
-  }
+.table-div::-webkit-scrollbar {
+  margin-left: 10px;
+  background-color: rgba(0, 0, 0, 0.123);
+  border-radius: 1em;
+}
+
+.table-div::-webkit-scrollbar-thumb {
+  background: orange;
+  border-radius: 1em;
+}
+
+.table-div::-webkit-scrollbar-thumb:hover {
+  background: rgb(179, 101, 0);
 }
