@@ -5,7 +5,7 @@ const Header = ({title, timestamp}) => {
 
   return (
     <div className='header'>
-        <h2 className='page-title'>{title}</h2>
+        <h3 className='page-title'>{title}</h3>
         {timestamp?
             <p className='timestamp'>{timestamp}</p> : 
             <></>

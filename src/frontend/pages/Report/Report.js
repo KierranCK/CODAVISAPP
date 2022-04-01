@@ -6,7 +6,7 @@ import Table from '../../components/Table/Table'
 import StatsBar from '../../components/StatsBar/StatsBar'
 import Header from "../../components/Header/Header";
 import config from '../../config.js'
-import { Modal, Button, Dropdown, Row, Col, InputGroup, FormControl } from "react-bootstrap";
+import { Modal, Button, Dropdown, Row, Col, InputGroup, FormControl, ListGroup } from "react-bootstrap";
 import axios from "axios";
 
 const Dashboard = () => {
@@ -57,11 +57,25 @@ const Dashboard = () => {
   //   return Object.values(item).join("").toLowerCase().includes(searchInput.toLowerCase)
   // })
 
+  useEffect(() => {
+    console.log(countries)
+    countries.map((country, i) => {
+      // <ListGroup.Item as="li" key={i}>{country}</ListGroup.Item>
+      console.log(country)
+  })
+  }, [countries])
+
   return (
       <Layout>
           <Header 
           title="Report"
           />
+
+{countries.map((country, i) => {
+              // <ListGroup.Item as="li" key={i}>{country}</ListGroup.Item>
+              console.log({i});
+              <p>{i}</p>
+          })}
 
 <Button variant="warning" onClick={() => setModalShow(true)}>
         Select Country
@@ -86,14 +100,40 @@ const Dashboard = () => {
         <h3>Country 1</h3>
 
         <InputGroup size="sm">
-    <FormControl
+          <FormControl
       placeholder="Country"
       aria-label="Country"
       aria-describedby="basic-addon1"
       onChange={e => query(e.target.value)}
+      // onKeyUp={e => {
+      //   let query = e.target.value;
+      //   let suggestions = [];
+      //   suggestions = countries.filter(country => {
+      //     console.log( country.toLocaleLowerCase().startsWith(query.toLocaleLowerCase));
+      //   })
+      // }}
     />
         </InputGroup>
+        <div className="autocom-box">
 
+        <ListGroup as="ul">
+  <ListGroup.Item as="li">
+    Cras justo odio
+  </ListGroup.Item>
+  <ListGroup.Item as="li">
+    Cras justo odio
+  </ListGroup.Item>
+
+          {countries.map((country, i) => {
+                         console.log(country);
+                         <ListGroup as="ul">
+              <ListGroup.Item as="li" key={i}>{country}</ListGroup.Item>
+              </ListGroup>
+
+          })}
+
+</ListGroup>
+        </div>
 
   </Col>
 {multiSelect ?

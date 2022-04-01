@@ -1,12 +1,11 @@
-import React from 'react'
+import React from "react";
 import { Chart, ArcElement, Tooltip, Legend } from "chart.js";
-import { Doughnut } from 'react-chartjs-2'
-import "./PieChart.css"
+import { Doughnut } from "react-chartjs-2";
+import "./PieChart.css";
 
 Chart.register(ArcElement, Tooltip, Legend);
 
-const PieChart = ( {labels} ) => {
-
+const PieChart = ({ labels, ChartData, cutout = 50 }) => {
   const data = {
     labels: ["Case on Hold", "Submitted", "In Production", "Shipped"],
     datasets: [
@@ -17,7 +16,6 @@ const PieChart = ( {labels} ) => {
         borderColor: ["#BD00FF", "#05FF00", "#FF0000", "#FFB800"],
         borderWidth: 0,
         weight: 1,
-        
       },
     ],
   };
@@ -25,27 +23,22 @@ const PieChart = ( {labels} ) => {
   const options = {
     responsive: false,
     maintainAspectRatio: false,
-    cutout: 50,
+    cutout: cutout,
     plugins: {
       legend: {
         labels: {
           font: {
             size: 10,
-            family: "'Saira', sans-serif"
+            family: "'Saira', sans-serif",
           },
           color: "white",
           boxWidth: 10,
         },
-        position: "left"
+        position: "left",
       },
     },
   };
-  return (
-    <Doughnut 
-    data={data}
-    options={options}
-    />
-  )
-}
+  return <Doughnut data={data} options={options} />;
+};
 
-export default PieChart
+export default PieChart;
