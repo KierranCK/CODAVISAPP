@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Nav from "../../components/Nav/Nav";
 import "./Dashboard.css";
 import Layout from "../../components/Layout/Layout";
 import Table from "../../components/Table/Table";
@@ -13,7 +12,6 @@ import BarChart from "../../components/BarChart/BarChart";
 import { Button, Row, Col, Dropdown } from "react-bootstrap";
 
 const Dashboard = () => {
-  const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
   const [lastUpdated, setLastUpdated] = useState(null);
   const [highestCases, setHighestCases] = useState([]);
@@ -34,7 +32,6 @@ const Dashboard = () => {
   const nullValue = "0";
 
   // retrieve data for api
-
   useEffect(() => {
     const options = {
       method: "GET",
@@ -123,6 +120,11 @@ const Dashboard = () => {
   return (
     <Layout>
       <Header title="Dashboard" timestamp={lastUpdated} />
+
+      {data &&
+        data.map((datapoint, i) => {
+          <p key={i}>{datapoint}</p>;
+        })}
 
       {!data ? (
         <div className="centre">
