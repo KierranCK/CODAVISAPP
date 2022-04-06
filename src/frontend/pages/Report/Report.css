@@ -9,4 +9,12 @@
 .input-btn {
   font-size: 0.5em !important;
 }
+
+select:hover {
+  cursor: pointer !important;
+}
+
+.warning-text {
+  color: #dc3545;
+}
 /*# sourceMappingURL=Report.css.map */

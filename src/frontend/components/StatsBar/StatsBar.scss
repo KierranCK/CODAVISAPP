@@ -15,6 +15,14 @@
   font-weight: 500;
   font-size: 0.7em;
   margin: 0;
+
+  &.red {
+    color: red !important;
+  }
+
+  &.green {
+    color: green !important;
+  }
 }
 
 .stat-figure {
@@ -22,3 +30,5 @@
   font-size: 1.4em;
   margin: 0;
 }
+
+

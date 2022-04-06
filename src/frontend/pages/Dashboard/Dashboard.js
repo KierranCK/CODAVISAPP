@@ -10,6 +10,7 @@ import Header from "../../components/Header/Header";
 import PieChart from "../../components/PieChart/PieChart";
 import BarChart from "../../components/BarChart/BarChart";
 import { Button, Row, Col, Dropdown } from "react-bootstrap";
+import { formatDateTime } from "../../common/common";
 
 const Dashboard = () => {
   const [data, setData] = useState(null);
@@ -33,26 +34,15 @@ const Dashboard = () => {
 
   // retrieve data for api
   useEffect(() => {
-    const options = {
-      method: "GET",
-      url: config.URL + "/statistics",
-      headers: {
-        "X-RapidAPI-Host": config.HOST,
-        "X-RapidAPI-Key": config.API_KEY,
-      },
-    };
     axios
-      .request(options)
+      .request({
+        method: "GET",
+        url: config.BACKEND + "/statistics",
+      })
       .then((res) => {
-        console.log(res.data.response);
-
-        let countryData1 = res.data.response;
-        let countryData2 = res.data.response;
-        let countryData3 = res.data.response;
-
-        console.log(countryData1);
-        console.log(countryData2);
-        console.log(countryData3);
+        let countryData1 = res.data;
+        let countryData2 = res.data;
+        let countryData3 = res.data;
 
         //sort data in decsending active case order
         const sortedByCases = countryData2.sort((a, b) => {
@@ -67,21 +57,7 @@ const Dashboard = () => {
         setHighestDeaths(sortedByDeaths);
 
         //setDate for 'last updated' value
-        const date = new Date();
-        const dateString =
-          ("0" + date.getDate()).slice(-2) +
-          "/" +
-          ("0" + (date.getMonth() + 1)).slice(-2) +
-          "/" +
-          date.getFullYear() +
-          " " +
-          ("0" + date.getHours()).slice(-2) +
-          ":" +
-          ("0" + date.getMinutes()).slice(-2) +
-          ":" +
-          ("0" + date.getSeconds()).slice(-2);
-
-        setLastUpdated("Last updated: " + dateString);
+        setLastUpdated("Last updated: " + formatDateTime(new Date()));
       })
       .catch((err) => {
         console.error(err);

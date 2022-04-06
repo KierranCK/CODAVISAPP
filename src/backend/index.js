@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import routes from "./routes.js";
-const port = process.env.PORT || 3006;
+const port = process.env.PORT || 3003;
 const app = express();
 //add middleware
 app.use(cors());

@@ -10,6 +10,14 @@
   margin: 0;
 }
 
+.stat-label.red {
+  color: red !important;
+}
+
+.stat-label.green {
+  color: green !important;
+}
+
 .stat-figure {
   font-weight: 500;
   font-size: 1.4em;

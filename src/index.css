@@ -32,12 +32,12 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb {
-  background: orange;
+  background: #262626;
   border-radius: 1em;
 }
 
 body::-webkit-scrollbar-thumb:hover {
-  background: #b36500;
+  background: black;
 }
 
 h1 {

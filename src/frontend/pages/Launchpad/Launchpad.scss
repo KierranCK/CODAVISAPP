@@ -17,8 +17,11 @@
   height: 100vh;
   justify-content: center;
   gap: 0.8em;
+}
 
-  &::after {
+.visualise-image {
+  z-index: -1;
+  &::before {
     content: "";
   background: linear-gradient(
     90deg,
@@ -29,8 +32,9 @@
     position: absolute;
     height: 100vh;
     width: 50em;
-    right: -150px;
+    left: 10%;
     pointer-events: none;
+    z-index: 10;
   }
 }
 
