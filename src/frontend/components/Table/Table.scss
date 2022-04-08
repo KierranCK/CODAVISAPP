@@ -11,13 +11,16 @@
 
   th {
     position: sticky;
+    cursor: pointer;
   }
 
   td.green {
-    color: green !important;
+    color: rgb(0, 221, 0) !important;
+    font-weight: 600;
   }
   td.red {
-    color: red !important;
+    color: rgb(255, 0, 0) !important;
+    font-weight: 600;
   }
 }
 .table-div {

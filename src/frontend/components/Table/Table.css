@@ -13,14 +13,17 @@
 .table th {
   position: -webkit-sticky;
   position: sticky;
+  cursor: pointer;
 }
 
 .table td.green {
-  color: green !important;
+  color: #00dd00 !important;
+  font-weight: 600;
 }
 
 .table td.red {
   color: red !important;
+  font-weight: 600;
 }
 
 .table-div {

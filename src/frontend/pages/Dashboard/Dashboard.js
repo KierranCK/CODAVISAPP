@@ -19,6 +19,7 @@ const Dashboard = () => {
   const [topFiveCases, setTopFiveCases] = useState({});
   const [topFiveDeaths, setTopFiveDeaths] = useState({});
   const [highestDeaths, setHighestDeaths] = useState([]);
+  const [sortTable, setSortTable] = useState(null);
   const headers = [
     "#",
     "Region",
@@ -31,6 +32,21 @@ const Dashboard = () => {
     "Total Deaths",
   ];
   const nullValue = "0";
+
+  const handleTableSort = (sortBy) => {
+    setSortTable(sortBy);
+  };
+
+  useEffect(() => {
+    console.log(sortTable);
+    switch (sortTable) {
+      case "Region":
+        break;
+
+      default:
+        break;
+    }
+  }, [sortTable]);
 
   // retrieve data for api
   useEffect(() => {
@@ -139,14 +155,28 @@ const Dashboard = () => {
                   </Col>
                 </Row>
 
-                <Table headers={headers} data={data} nullValue={nullValue} />
+                <Table
+                  headers={headers}
+                  data={data}
+                  nullValue={nullValue}
+                  handleTableSort={handleTableSort}
+                />
               </div>
             </Col>
             <Col className="gy-4">
               <div className="p-3 rounded bg-dark">
                 <p>Global Chart</p>
                 <div className="d-flex justify-content-center">
-                  <PieChart labels={[]} data={[]} colors={[]} />
+                  <PieChart
+                    labels={[
+                      "Active",
+                      "Critical",
+                      "Recovered",
+                      "Total Cases",
+                      "Total Deaths",
+                    ]}
+                    data={data[0]}
+                  />
                 </div>
               </div>
             </Col>

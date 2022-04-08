@@ -8,24 +8,20 @@ import config from "../../config.js";
 import {
   Modal,
   Button,
-  Dropdown,
   Row,
   Col,
   InputGroup,
   FormControl,
-  ListGroup,
   Form,
-  Container,
 } from "react-bootstrap";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import PieChart from "../../components/PieChart/PieChart";
 import BarChart from "../../components/BarChart/BarChart";
-import { addCommas } from "../../common/common";
+import { addCommas, formatDateTime } from "../../common/common";
 const Report = () => {
   const [countries, setCountries] = useState([]);
-  const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [modalShow, setModalShow] = useState(false);
   const [multiSelect, setMultiSelect] = useState(false);
@@ -36,9 +32,8 @@ const Report = () => {
   const [date, setDate] = useState(new Date());
   const [lastUpdated, setLastUpdated] = useState(null);
   const [countryData, setcountryData] = useState([]);
-  const [dataComparison, setDataComparison] = useState([]);
-  const [sameSelection, setSameSelection] = useState(false);
 
+  //request list of countries from API
   useEffect(() => {
     if (modalShow === true) {
       axios
@@ -53,6 +48,7 @@ const Report = () => {
     }
   }, [modalShow]);
 
+  //function to format date as yyyy-mm-dd
   const formatDate = (date) => {
     const dateString =
       date.getFullYear() +
@@ -63,6 +59,7 @@ const Report = () => {
     return dateString;
   };
 
+  //function to retrieve data for reports
   const viewReports = (e) => {
     e.preventDefault();
     setModalShow(false);
@@ -89,6 +86,7 @@ const Report = () => {
         console.log("Country 1: " + res.data);
         setCountry1Data(res.data[0]);
         multiSelect && setCountry2Data(res.data[1]);
+        setLastUpdated("Last updated: " + formatDateTime(new Date()));
         setMultiSelect(false);
         setLoading(false);
       })
@@ -159,109 +157,17 @@ const Report = () => {
     console.log(country2Data);
     if (country1Data !== null && country2Data !== null)
       setcountryData([country1Data, country2Data]);
-    setDataComparison(compareData(country1Data, country2Data));
   }, [country2Data]);
 
   useEffect(() => {
-    // console.log(countryData);
-    // //remove null values
-    // const list = [];
-    // countryData.map((data, i) => {
-    //   if (data !== null) {
-    //     list.push(data);
-    //   }
-    // });
     console.log(countryData);
   }, [countryData]);
-
-  //function to compare data between countries
-  const compareData = (country1, country2) => {
-    const country1Comparison = {
-      active: 2,
-      critical: 9989,
-      recovered: 452454,
-      totalCases: -432433,
-      totalDeaths: 42342432,
-    };
-    const country2Comparison = {
-      active: 2,
-      critical: -9989,
-      recovered: -3254,
-      totalCases: 432433,
-      totalDeaths: -42342432,
-    };
-    const countryComparison = [country1Comparison, country2Comparison];
-    console.log(countryComparison);
-    return countryComparison;
-  };
-
-  //PUT CODE INSIDE API CALL USEEFFECT
-  // const compareData = (country1, country2) => {
-  //   console.log(country1);
-  //   console.log(country2);
-  //   try {
-  //     const country1Comparison = {
-  //       active:
-  //         country1.cases.active !== null
-  //           ? country1.cases.active - country2.cases.active
-  //           : 0 - country2.cases.active,
-  //       critical:
-  //         country1.cases.critical !== null
-  //           ? country1.cases.critical - country2.cases.critical
-  //           : 0 - country2.cases.critical,
-  //       recovered:
-  //         country1.cases.recovered !== null
-  //           ? country1.cases.recovered - country2.cases.recovered
-  //           : 0 - country2.cases.recovered,
-  //       totalCases:
-  //         country1.cases.total !== null
-  //           ? country1.cases.total - country2.cases.total
-  //           : 0 - country2.cases.total,
-  //       totalDeaths:
-  //         country1.deaths.total !== null
-  //           ? country1.deaths.total - country2.deaths.total
-  //           : 0 - country2.deaths.total,
-  //     };
-  //     const country2Comparison = {
-  //       active:
-  //         country1.cases.active !== null
-  //           ? country2.cases.active - country1.cases.active
-  //           : 0 - country1.cases.active,
-  //       critical:
-  //         country1.cases.critical !== null
-  //           ? country2.cases.critical - country1.cases.critical
-  //           : 0 - country1.cases.critical,
-  //       recovered:
-  //         country1.cases.recovered !== null
-  //           ? country2.cases.recovered - country1.cases.recovered
-  //           : 0 - country1.cases.recovered,
-  //       totalCases:
-  //         country1.cases.total !== null
-  //           ? country2.cases.total - country1.cases.total
-  //           : 0 - country1.cases.total,
-  //       totalDeaths:
-  //         country1.deaths.total !== null
-  //           ? country2.deaths.total - country1.deaths.total
-  //           : 0 - country1.deaths.total,
-  //     };
-  //     const countryComparison = [country1Comparison, country2Comparison];
-
-  //     return countryComparison;
-  //   } catch (TypeError) {
-  //     return [];
-  //   }
-  // };
 
   return (
     <Layout>
       <Row>
         <Col>
-          <Header
-            title="Report"
-            timestamp={
-              lastUpdated ? "Last Updated: " + formatDate(new Date()) : ""
-            }
-          />
+          <Header title="Report" timestamp={lastUpdated} />
         </Col>
         <Col className="col-md-auto">
           <Button
@@ -425,6 +331,7 @@ const Report = () => {
                           totalCases: country.difference.totalCases,
                           totalDeaths: country.difference.totalDeaths,
                         },
+                        population: country.population,
                       }}
                       horizontal={false}
                     />
@@ -432,12 +339,24 @@ const Report = () => {
                   <Col className="px-0 py-4">
                     <Row>
                       <Col>
-                        <PieChart cutout={55} />
+                        <PieChart
+                          labels={["Active", "Critical"]}
+                          data={countryData[i]}
+                          cutout={55}
+                        />
                       </Col>
                     </Row>
                     <Row>
                       <Col className="py-4 px-3">
-                        <BarChart />
+                        <BarChart
+                          label=""
+                          categories={["Active", "Critical", "Recovered"]}
+                          values={[
+                            countryData[i].cases.active,
+                            countryData[i].cases.critical,
+                            countryData[i].cases.recovered,
+                          ]}
+                        />
                       </Col>
                     </Row>
                   </Col>

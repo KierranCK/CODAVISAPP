@@ -4,23 +4,44 @@
   text-align: left;
 }
 
+.stat {
+  border-left: 0.02em rgba(255, 255, 255, 0.2) solid;
+  padding: 0 3em;
+  text-align: left;
+}
+
 .stat-label {
   font-weight: 500;
-  font-size: 0.7em;
+  font-size: 0.8em;
   margin: 0;
 }
 
 .stat-label.red {
-  color: red !important;
+  color: #ff2b2b !important;
+  background: black;
+  width: auto;
+  border-radius: 0.3em;
+  margin-left: 1em;
 }
 
 .stat-label.green {
-  color: green !important;
+  color: #00b700 !important;
+  background: black;
+  width: auto;
+  border-radius: 0.3em;
+  margin-left: 1em;
 }
 
 .stat-figure {
   font-weight: 500;
   font-size: 1.4em;
   margin: 0;
+  position: relative;
+}
+
+.stat-figure span {
+  font-size: 0.7em;
+  position: absolute;
+  margin-left: 0.2em;
 }
 /*# sourceMappingURL=StatsBar.css.map */

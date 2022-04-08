@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard Tests Ensure Launchpad has not inadvertently changed 1`] = `
+<DocumentFragment>
+  <div
+    class="launchpad-title-pane"
+  >
+    <h1>
+      404
+    </h1>
+    <p>
+      Oops! Page not Found
+    </p>
+    <div
+      class="row"
+    >
+      <div
+        class="col"
+      >
+        <a
+          href="/dashboard"
+        >
+          <button
+            class="btn btn-warning btn-sm"
+            type="button"
+          >
+            Dashboard
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Error Tests Ensure Error has not inadvertently changed 1`] = `
+<DocumentFragment>
+  <div
+    class="launchpad-title-pane"
+  >
+    <h1>
+      404
+    </h1>
+    <p>
+      Oops! Page not Found
+    </p>
+    <div
+      class="row"
+    >
+      <div
+        class="col"
+      >
+        <a
+          href="/dashboard"
+        >
+          <button
+            class="btn btn-warning btn-sm"
+            type="button"
+          >
+            Dashboard
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Launchpad Tests Ensure Launchpad has not inadvertently changed 1`] = `
+<DocumentFragment>
+  <div
+    class="launchpad-title-pane"
+  >
+    <h1>
+      404
+    </h1>
+    <p>
+      Oops! Page not Found
+    </p>
+    <div
+      class="row"
+    >
+      <div
+        class="col"
+      >
+        <a
+          href="/dashboard"
+        >
+          <button
+            class="btn btn-warning btn-sm"
+            type="button"
+          >
+            Dashboard
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

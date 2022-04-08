@@ -10,7 +10,7 @@ const StatsBar = ({ data, horizontal = true }) => {
   return (
     <>
       {horizontal ? (
-        <div className="container stats-bar">
+        <div className="container stats-bar stats-bar-horizontal">
           <div className="row px-5 mx-5">
             <div className="col px-2 stat">
               <p className="stat-label">Active</p>
@@ -39,7 +39,14 @@ const StatsBar = ({ data, horizontal = true }) => {
           <Col>
             <Row className="row px-0 py-2 stat" px={0} py={2}>
               <p className="stat-label">Active</p>
-              <p className="stat-figure">{addCommas(data.cases.active)}</p>
+              <p className="stat-figure">
+                {addCommas(data.cases.active)}
+                <span>{`(${
+                  Math.round(
+                    (data.cases.active / data.population + Number.EPSILON) * 100
+                  ) / 100
+                }%)`}</span>
+              </p>
               <p
                 className={`stat-label ${
                   data.comparison.active > 0 ? `red` : `green`
@@ -54,7 +61,15 @@ const StatsBar = ({ data, horizontal = true }) => {
             </Row>
             <div className="row px-0 py-2 stat">
               <p className="stat-label">Critical</p>
-              <p className="stat-figure">{addCommas(data.cases.critical)}</p>
+              <p className="stat-figure">
+                {addCommas(data.cases.critical)}
+                <span>{`(${
+                  Math.round(
+                    (data.cases.critical / data.population + Number.EPSILON) *
+                      100
+                  ) / 100
+                }%)`}</span>
+              </p>
               <p
                 className={`stat-label ${
                   data.comparison.critical > 0 ? `red` : `green`
@@ -99,7 +114,14 @@ const StatsBar = ({ data, horizontal = true }) => {
             </div>
             <div className="row px-0 py-2 stat">
               <p className="stat-label">Total Deaths</p>
-              <p className="stat-figure">{addCommas(data.deaths.total)}</p>
+              <p className="stat-figure">
+                {addCommas(data.deaths.total)}
+                <span>{`(${
+                  Math.round(
+                    (data.deaths.total / data.population + Number.EPSILON) * 100
+                  ) / 100
+                }%)`}</span>
+              </p>
               <p
                 className={`stat-label ${
                   data.comparison.totalDeaths > 0 ? `red` : `green`

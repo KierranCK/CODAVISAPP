@@ -5,15 +5,21 @@ import "./PieChart.css";
 
 Chart.register(ArcElement, Tooltip, Legend);
 
-const PieChart = ({ labels, ChartData, cutout = 50 }) => {
-  const data = {
-    labels: ["Case on Hold", "Submitted", "In Production", "Shipped"],
+const PieChart = ({ labels, data, cutout = 50 }) => {
+  const chartData = {
+    labels: labels,
     datasets: [
       {
-        label: "# of Votes",
-        data: [12, 19, 3, 5],
-        backgroundColor: ["#BD00FF", "#05FF00", "#FF0000", "#FFB800"],
-        borderColor: ["#BD00FF", "#05FF00", "#FF0000", "#FFB800"],
+        label: "",
+        data: [data.cases.active, data.cases.critical],
+        backgroundColor: [
+          "#BD00FF",
+          "#05FF00",
+          "#FF0000",
+          "#FFB800",
+          "#000000",
+        ],
+        borderColor: ["#BD00FF", "#05FF00", "#FF0000", "#FFB800", "#000000"],
         borderWidth: 0,
         weight: 1,
       },
@@ -38,7 +44,7 @@ const PieChart = ({ labels, ChartData, cutout = 50 }) => {
       },
     },
   };
-  return <Doughnut data={data} options={options} />;
+  return <Doughnut data={chartData} options={options} />;
 };
 
 export default PieChart;

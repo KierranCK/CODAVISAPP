@@ -11,17 +11,32 @@
   text-align: left;
 }
 
+.stat {
+  border-left: 0.02em rgba(255, 255, 255, 0.2) solid;
+  padding: 0 3em;
+  text-align: left;
+}
+
 .stat-label {
   font-weight: 500;
-  font-size: 0.7em;
+  font-size: 0.8em;
   margin: 0;
 
   &.red {
-    color: red !important;
+    color: rgb(255, 43, 43) !important;
+    background: rgb(0, 0, 0);
+    width: auto;
+    border-radius: 0.3em;
+    margin-left: 1em;
+
   }
 
   &.green {
-    color: green !important;
+    color: rgb(0, 183, 0) !important;
+    background: black;
+    width: auto;
+    border-radius: 0.3em;
+    margin-left: 1em;
   }
 }
 
@@ -29,6 +44,13 @@
   font-weight: 500;
   font-size: 1.4em;
   margin: 0;
+  position: relative;
+
+  span {
+    font-size: 0.7em;
+    position: absolute;
+    margin-left: 0.2em;
+  }
 }
 
 
