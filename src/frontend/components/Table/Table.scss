@@ -4,6 +4,7 @@
   display: block;
   max-height: 30em;
   padding-right: 10px;
+  width: 100%;
 
   tr {
     padding: 10em 1em;
@@ -12,6 +13,11 @@
   th {
     position: sticky;
     cursor: pointer;
+    
+    &.active {
+      text-decoration: underline;
+      background: rgb(28, 28, 28);
+    }
   }
 
   td.green {
@@ -23,6 +29,11 @@
     font-weight: 600;
   }
 }
+
+td, th {
+  min-width: 10em;
+}
+
 .table-div {
   overflow-y: scroll;
 }
@@ -40,4 +51,10 @@
 
 .table-div::-webkit-scrollbar-thumb:hover {
   background: rgb(179, 101, 0);
+}
+
+.down-arrow, .up-arrow {
+  position: absolute;
+  right: 0;
+  top: 0;
 }

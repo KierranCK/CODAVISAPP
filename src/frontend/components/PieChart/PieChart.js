@@ -11,15 +11,14 @@ const PieChart = ({ labels, data, cutout = 50 }) => {
     datasets: [
       {
         label: "",
-        data: [data.cases.active, data.cases.critical],
+        data: data,
         backgroundColor: [
+          "#FFB800",
           "#BD00FF",
           "#05FF00",
           "#FF0000",
-          "#FFB800",
           "#000000",
         ],
-        borderColor: ["#BD00FF", "#05FF00", "#FF0000", "#FFB800", "#000000"],
         borderWidth: 0,
         weight: 1,
       },

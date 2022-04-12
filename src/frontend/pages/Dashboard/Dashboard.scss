@@ -10,3 +10,24 @@
 .bg-dark {
   background: rgba(0, 0, 0, 0.227) !important;
 }
+
+.ascending-btn {
+  width: 3em;
+  height: 2em;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 1em;
+  cursor: pointer;
+  background: rgb(248, 173, 0);
+  border-radius: 0.2em;
+
+  span {
+    padding: 0;
+    margin: 0;
+    font-size: 4em;
+    position: relative;
+    top: -0.25em;
+    left: -0.12em;
+    color:rgb(0, 0, 0)
+  }
+}

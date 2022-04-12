@@ -4,6 +4,7 @@
   display: block;
   max-height: 30em;
   padding-right: 10px;
+  width: 100%;
 }
 
 .table tr {
@@ -16,6 +17,11 @@
   cursor: pointer;
 }
 
+.table th.active {
+  text-decoration: underline;
+  background: #1c1c1c;
+}
+
 .table td.green {
   color: #00dd00 !important;
   font-weight: 600;
@@ -24,6 +30,10 @@
 .table td.red {
   color: red !important;
   font-weight: 600;
+}
+
+td, th {
+  min-width: 10em;
 }
 
 .table-div {
@@ -43,5 +53,11 @@
 
 .table-div::-webkit-scrollbar-thumb:hover {
   background: #b36500;
+}
+
+.down-arrow, .up-arrow {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 /*# sourceMappingURL=Table.css.map */

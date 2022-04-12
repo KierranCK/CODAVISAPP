@@ -179,6 +179,14 @@ const Report = () => {
           </Button>
         </Col>
       </Row>
+      {countryData.length < 1 && !modalShow && (
+        <Row>
+          <Col>
+            <p>Click 'Select Country' to generate a report</p>
+          </Col>
+        </Row>
+      )}
+
       <Modal
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
@@ -293,7 +301,7 @@ const Report = () => {
       <Row>
         {!loading &&
           countryData.map((country, i) => (
-            <Col key={i} md={6}>
+            <Col key={i} md={countryData.length === 2 ? 6 : 12}>
               <div className="p-3 rounded bg-dark">
                 <Row className="country-header">
                   <Col md="auto">
@@ -320,9 +328,11 @@ const Report = () => {
                           recovered: country.cases.recovered,
                           active: country.cases.active,
                           total: country.cases.total,
+                          new: country.cases.new,
                         },
                         deaths: {
                           total: country.deaths.total,
+                          new: country.deaths.new,
                         },
                         comparison: {
                           active: country.difference.active,
@@ -330,10 +340,13 @@ const Report = () => {
                           recovered: country.difference.recovered,
                           totalCases: country.difference.totalCases,
                           totalDeaths: country.difference.totalDeaths,
+                          newCases: country.difference.newCases,
+                          newDeaths: country.difference.newDeaths,
                         },
                         population: country.population,
                       }}
                       horizontal={false}
+                      comparison={countryData.length > 1}
                     />
                   </Col>
                   <Col className="px-0 py-4">
@@ -341,7 +354,10 @@ const Report = () => {
                       <Col>
                         <PieChart
                           labels={["Active", "Critical"]}
-                          data={countryData[i]}
+                          data={[
+                            countryData[i].cases.active,
+                            countryData[i].cases.active,
+                          ]}
                           cutout={55}
                         />
                       </Col>

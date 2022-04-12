@@ -75,24 +75,32 @@ exports.history = (req, res) => {
           difference: {
             active:
               results[0].cases.active === null
-                ? 0
+                ? 0 - results[1].cases.active
                 : results[0].cases.active - results[1].cases.active,
             critical:
               results[0].cases.critical === null
-                ? 0
+                ? 0 - results[1].cases.critical
                 : results[0].cases.critical - results[1].cases.critical,
             recovered:
               results[0].cases.receovered === null
-                ? 0
+                ? 0 - results[1].cases.recovered
                 : results[0].cases.recovered - results[1].cases.recovered,
             totalCases:
               results[0].cases.total === null
-                ? 0
+                ? 0 - results[1].cases.total
                 : results[0].cases.total - results[1].cases.total,
             totalDeaths:
               results[0].deaths.total === null
-                ? 0
+                ? 0 - results[1].deaths.total
                 : results[0].deaths.total - results[1].deaths.total,
+            newCases:
+              results[0].cases.new === null
+                ? 0 - results[1].cases.new
+                : results[0].cases.new - results[1].cases.new,
+            newDeaths:
+              results[0].deaths.new === null
+                ? 0 - results[1].deaths.new
+                : results[0].deaths.new - results[1].deaths.new,
           },
         };
 
@@ -100,24 +108,32 @@ exports.history = (req, res) => {
           difference: {
             active:
               results[1].cases.active === null
-                ? 0
+                ? 0 - results[0].cases.active
                 : results[1].cases.active - results[0].cases.active,
             critical:
               results[1].cases.critical === null
-                ? 0
+                ? 0 - results[0].cases.critical
                 : results[1].cases.critical - results[0].cases.critical,
             recovered:
               results[1].cases.receovered === null
-                ? 0
+                ? 0 - results[0].cases.recovered
                 : results[1].cases.recovered - results[0].cases.recovered,
             totalCases:
               results[1].cases.total === null
-                ? 0
+                ? 0 - results[0].cases.total
                 : results[1].cases.total - results[0].cases.total,
             totalDeaths:
               results[1].deaths.total === null
-                ? 0
+                ? 0 - results[0].deaths.total
                 : results[1].deaths.total - results[0].deaths.total,
+            newCases:
+              results[1].cases.new === null
+                ? 0 - results[0].cases.new
+                : results[1].cases.new - results[0].cases.new,
+            newDeaths:
+              results[1].deaths.new === null
+                ? 0 - results[0].deaths.new
+                : results[1].deaths.new - results[0].deaths.new,
           },
         };
 

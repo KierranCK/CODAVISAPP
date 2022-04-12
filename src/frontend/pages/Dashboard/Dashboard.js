@@ -14,15 +14,19 @@ import { formatDateTime } from "../../common/common";
 
 const Dashboard = () => {
   const [data, setData] = useState(null);
+  const [globalStats, setGlobalStats] = useState(null);
   const [lastUpdated, setLastUpdated] = useState(null);
   const [highestCases, setHighestCases] = useState([]);
   const [topFiveCases, setTopFiveCases] = useState({});
   const [topFiveDeaths, setTopFiveDeaths] = useState({});
   const [highestDeaths, setHighestDeaths] = useState([]);
   const [sortTable, setSortTable] = useState(null);
+  const [activeHeader, setActiveHeader] = useState("");
+  const [ascending, setAscending] = useState(true);
   const headers = [
     "#",
     "Region",
+    "Population",
     "Active",
     "Critical",
     "New Cases",
@@ -32,21 +36,6 @@ const Dashboard = () => {
     "Total Deaths",
   ];
   const nullValue = "0";
-
-  const handleTableSort = (sortBy) => {
-    setSortTable(sortBy);
-  };
-
-  useEffect(() => {
-    console.log(sortTable);
-    switch (sortTable) {
-      case "Region":
-        break;
-
-      default:
-        break;
-    }
-  }, [sortTable]);
 
   // retrieve data for api
   useEffect(() => {
@@ -59,6 +48,8 @@ const Dashboard = () => {
         let countryData1 = res.data;
         let countryData2 = res.data;
         let countryData3 = res.data;
+        let countryData4 = res.data;
+        console.log(res.data);
 
         //sort data in decsending active case order
         const sortedByCases = countryData2.sort((a, b) => {
@@ -71,6 +62,7 @@ const Dashboard = () => {
           return b.deaths.total - a.deaths.total;
         });
         setHighestDeaths(sortedByDeaths);
+        setGlobalStats(res.data[0]);
 
         //setDate for 'last updated' value
         setLastUpdated("Last updated: " + formatDateTime(new Date()));
@@ -109,16 +101,15 @@ const Dashboard = () => {
     console.log("data: " + data);
   }, [data]);
 
+  useEffect(() => {
+    globalStats && console.log(globalStats);
+  }, [globalStats]);
+
   return (
     <Layout>
       <Header title="Dashboard" timestamp={lastUpdated} />
 
-      {data &&
-        data.map((datapoint, i) => {
-          <p key={i}>{datapoint}</p>;
-        })}
-
-      {!data ? (
+      {!globalStats ? (
         <div className="centre">
           <Loading />
         </div>
@@ -129,7 +120,7 @@ const Dashboard = () => {
               <div className="p-3 rounded bg-dark">
                 <p>Global Stats</p>
                 <div className="text-center">
-                  <StatsBar data={data[0]} />
+                  <StatsBar data={globalStats} />
                 </div>
               </div>
             </Col>
@@ -138,29 +129,29 @@ const Dashboard = () => {
           <Row>
             <Col className="gy-4">
               <div className="p-3 rounded bg-dark">
-                <p>Global Stats By Region</p>
                 <Row>
-                  <Col className="gy-1">
-                    {/* <Dropdown>
-  <Dropdown.Toggle variant="success" id="dropdown-basic">
-    Dropdown Button
-  </Dropdown.Toggle>
-
-  <Dropdown.Menu>
-    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-  </Dropdown.Menu>
-</Dropdown> */}
+                  <Col>
+                    <p>Global Stats By Region</p>
+                  </Col>
+                  <Col md="auto">
+                    {/* <div
+                      onClick={() => setAscending(!ascending)}
+                      className="ascending-btn"
+                    >
+                      {ascending ? (
+                        <span class="material-icons-outlined">
+                          arrow_drop_up
+                        </span>
+                      ) : (
+                        <span class="material-icons-outlined">
+                          arrow_drop_down
+                        </span>
+                      )}
+                    </div> */}
                   </Col>
                 </Row>
 
-                <Table
-                  headers={headers}
-                  data={data}
-                  nullValue={nullValue}
-                  handleTableSort={handleTableSort}
-                />
+                <Table headers={headers} data={data} nullValue={nullValue} />
               </div>
             </Col>
             <Col className="gy-4">
@@ -175,7 +166,29 @@ const Dashboard = () => {
                       "Total Cases",
                       "Total Deaths",
                     ]}
-                    data={data[0]}
+                    data={[500, 5039, 8743, 434, 232]}
+                  />
+
+                  <PieChart
+                    labels={[
+                      "Active",
+                      "Critical",
+                      "Recovered",
+                      "Total Cases",
+                      "Total Deaths",
+                    ]}
+                    data={[500, 5039, 8743, 434, 2923]}
+                  />
+
+                  <PieChart
+                    labels={[
+                      "Active",
+                      "Critical",
+                      "Recovered",
+                      "Total Cases",
+                      "Total Deaths",
+                    ]}
+                    data={[500, 5039, 8743, 9034, 23]}
                   />
                 </div>
               </div>
@@ -183,7 +196,7 @@ const Dashboard = () => {
           </Row>
 
           <Row>
-            <Col className="gy-4">
+            <Col className="gy-4" md="6">
               <div className="p-3 rounded bg-dark">
                 <p>Cases</p>
                 <div className="d-flex justify-content-center">
@@ -196,7 +209,7 @@ const Dashboard = () => {
               </div>
             </Col>
 
-            <Col className="gy-4">
+            <Col className="gy-4" md="6">
               <div className="p-3 rounded bg-dark">
                 <p>Deaths</p>
                 <div className="d-flex justify-content-center">
