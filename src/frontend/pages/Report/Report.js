@@ -349,8 +349,8 @@ const Report = () => {
                       comparison={countryData.length > 1}
                     />
                   </Col>
-                  <Col className="px-0 py-4">
-                    <Row>
+                  <Col className="px-0 py-2">
+                    <Row className="report-row">
                       <Col>
                         <PieChart
                           labels={["Active", "Critical"]}
@@ -362,8 +362,8 @@ const Report = () => {
                         />
                       </Col>
                     </Row>
-                    <Row>
-                      <Col className="py-4 px-3">
+                    <Row className="report-row">
+                      <Col className="py-5 px-3 report-bar-chart">
                         <BarChart
                           label=""
                           categories={["Active", "Critical", "Recovered"]}

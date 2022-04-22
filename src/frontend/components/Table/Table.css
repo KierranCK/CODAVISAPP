@@ -1,10 +1,10 @@
 .table {
   color: white;
-  font-size: 0.7em;
+  font-size: 0.8em;
   display: block;
-  max-height: 30em;
-  padding-right: 10px;
+  position: relative;
   width: 100%;
+  padding-right: 1em;
 }
 
 .table tr {
@@ -12,9 +12,12 @@
 }
 
 .table th {
+  top: 0;
+  left: 0;
   position: -webkit-sticky;
   position: sticky;
   cursor: pointer;
+  height: 100%;
 }
 
 .table th.active {
@@ -33,11 +36,12 @@
 }
 
 td, th {
-  min-width: 10em;
+  min-width: 8em;
 }
 
 .table-div {
   overflow-y: scroll;
+  max-height: 26em;
 }
 
 .table-div::-webkit-scrollbar {

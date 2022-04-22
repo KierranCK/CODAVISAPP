@@ -1,9 +1,17 @@
 .nav {
   background: rgba(255, 255, 255, 0.1);
+  height: 100vh;
+  position: fixed;
+  width: 15em;
+}
+
+.nav .nav-list {
   padding-top: 5em;
   height: 100vh;
   position: fixed;
-  width: 12em;
+  width: 17.5em;
+  text-decoration: none;
+  left: -2.5em;
 }
 
 .nav .nav-link {
@@ -12,6 +20,9 @@
   font-size: 0.8em;
   padding: 1em 8em 1em 3em;
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .nav .nav-link span {
@@ -37,5 +48,28 @@
 
 .nav .nav-link a {
   color: white;
+}
+
+.nav-logo-link {
+  background: rgba(0, 0, 0, 0.13);
+  width: 100%;
+  height: 4em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.codavis-nav-logo {
+  width: 7em;
+}
+
+.nav-label {
+  font-size: 1em;
+  font-weight: 500;
+  position: relative;
+  top: 0.5em;
 }
 /*# sourceMappingURL=Nav.css.map */

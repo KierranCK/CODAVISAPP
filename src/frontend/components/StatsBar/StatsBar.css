@@ -1,12 +1,28 @@
-.stat {
+.stats-bar-horizontal {
+  padding: 0;
+}
+
+.stats-bar-horizontal .stat-figure {
+  font-weight: 500;
+  font-size: 1.3em;
+  margin: 0;
+  position: relative;
+}
+
+.stats-bar-horizontal .stat {
   border-left: 0.02em rgba(255, 255, 255, 0.2) solid;
-  padding: 0 3em;
   text-align: left;
+  background: rgba(0, 0, 0, 0.249);
+  margin-right: 0.2em;
+  border-radius: 0.4em;
+}
+
+.stats-bar-horizontal .stat:last-child {
+  margin-right: 0em;
 }
 
 .stat {
   border-left: 0.02em rgba(255, 255, 255, 0.2) solid;
-  padding: 0 3em;
   text-align: left;
 }
 

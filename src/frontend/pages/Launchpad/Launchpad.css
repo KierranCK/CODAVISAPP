@@ -54,4 +54,16 @@
 button {
   padding: 0.5em 2.5em !important;
 }
+
+.codavis-logo {
+  width: 7em;
+  position: absolute;
+  top: -13em;
+  left: -1em;
+}
+
+.codavis-logo-div {
+  background: grey;
+  position: relative;
+}
 /*# sourceMappingURL=Launchpad.css.map */

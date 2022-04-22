@@ -20,9 +20,7 @@ const Dashboard = () => {
   const [topFiveCases, setTopFiveCases] = useState({});
   const [topFiveDeaths, setTopFiveDeaths] = useState({});
   const [highestDeaths, setHighestDeaths] = useState([]);
-  const [sortTable, setSortTable] = useState(null);
-  const [activeHeader, setActiveHeader] = useState("");
-  const [ascending, setAscending] = useState(true);
+
   const headers = [
     "#",
     "Region",
@@ -132,22 +130,6 @@ const Dashboard = () => {
                 <Row>
                   <Col>
                     <p>Global Stats By Region</p>
-                  </Col>
-                  <Col md="auto">
-                    {/* <div
-                      onClick={() => setAscending(!ascending)}
-                      className="ascending-btn"
-                    >
-                      {ascending ? (
-                        <span class="material-icons-outlined">
-                          arrow_drop_up
-                        </span>
-                      ) : (
-                        <span class="material-icons-outlined">
-                          arrow_drop_down
-                        </span>
-                      )}
-                    </div> */}
                   </Col>
                 </Row>
 

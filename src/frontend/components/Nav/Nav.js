@@ -1,49 +1,46 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import './Nav.css'
+import React from "react";
+import { NavLink } from "react-router-dom";
+import codavisLogo from "../../images/CODAVIS-logo-white.png";
+import "./Nav.css";
 
 const Nav = () => {
   return (
-    
-//     <div className='nav'>
+    <nav className="nav">
+      <NavLink to="/dashboard" className="nav-logo-link">
+        <img
+          src={codavisLogo}
+          alt="codavis-logo"
+          className="codavis-nav-logo"
+        />
+      </NavLink>
+      <ul className="nav-list flex-column">
+        <li className="nav-item">
+          <NavLink
+            to="/dashboard"
+            className="nav-link"
+            activeclassname="active"
+          >
+            <span class="material-icons-outlined">analytics</span>
+            <p className="nav-label">Dashboard</p>
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink to="/report" className="nav-link" activeclassname="active">
+            <span class="material-icons-outlined ">summarize</span>
 
-//         <Link to="/dashboard">
-//             <div className='nav-item'>Dashboard</div>
-//         </Link>
+            <p className="nav-label">Report</p>
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink to="/about" className="nav-link" activeclassname="active">
+            <span class="material-icons-outlined">info</span>
 
-//         <Link to="/report">
-//             <div className='nav-item'>Report</div>
-//         </Link>
+            <p className="nav-label">About</p>
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  );
+};
 
-//         <Link to="/about">
-//             <div className='nav-item'>About</div>
-//         </Link>
-
-
-//     </div>
-//   
-
-<ul className='nav flex-column'>
-    <li className='nav-item'>
-        <NavLink to="/dashboard" className='nav-link' activeclassname="active">
-        {/* <span class="material-icons-outlined">analytics</span> */}
-        Dashboard
-        </NavLink>
-    </li>
-    <li className='nav-item'>
-        <NavLink to="/report" className='nav-link' activeclassname="active">
-        {/* <span class="material-icons-outlined ">summarize</span> */}
-            Report
-            </NavLink>
-    </li>
-    <li className='nav-item'>
-        <NavLink to="/about" className='nav-link' activeclassname="active">
-        {/* <span class="material-icons-outlined">info</span> */}
-            About
-            </NavLink>
-    </li>
-</ul>
-  )
-}
-
-export default Nav
+export default Nav;

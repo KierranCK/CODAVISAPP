@@ -17,4 +17,14 @@ select:hover {
 .warning-text {
   color: #dc3545;
 }
+
+.report-row {
+  position: relative;
+  left: -2em;
+}
+
+.report-bar-chart {
+  margin-top: 3em;
+  min-height: 10em;
+}
 /*# sourceMappingURL=Report.css.map */
