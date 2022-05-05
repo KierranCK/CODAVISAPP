@@ -31,6 +31,7 @@
 
 .visualise-image {
   z-index: -1;
+  position: relative;
 }
 
 .visualise-image::before {
@@ -39,8 +40,8 @@
   background: linear-gradient(90deg, transparent, black 75%, transparent);
   position: absolute;
   height: 100vh;
-  width: 50em;
-  left: 10%;
+  width: 80%;
+  left: -55%;
   pointer-events: none;
   z-index: 10;
 }

@@ -5,20 +5,16 @@ import "./PieChart.css";
 
 Chart.register(ArcElement, Tooltip, Legend);
 
-const PieChart = ({ labels, data, cutout = 50 }) => {
+const defaultColors = ["#FFB800", "#BD00FF", "#05FF00", "#FF0000", "#000000"];
+
+const PieChart = ({ labels, data, cutout = 50, colors = defaultColors }) => {
   const chartData = {
     labels: labels,
     datasets: [
       {
         label: "",
         data: data,
-        backgroundColor: [
-          "#FFB800",
-          "#BD00FF",
-          "#05FF00",
-          "#FF0000",
-          "#000000",
-        ],
+        backgroundColor: colors,
         borderWidth: 0,
         weight: 1,
       },

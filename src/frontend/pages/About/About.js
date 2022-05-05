@@ -32,7 +32,8 @@ const About = () => {
         <Button
           variant="warning"
           size="sm"
-          href="http://https://github.com/KierranCK/CODAVISAPP/"
+          href="https://github.com/KierranCK/CODAVISAPP/"
+          target="_blank"
         >
           GitHub
         </Button>

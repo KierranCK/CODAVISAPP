@@ -71,7 +71,9 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
+    console.log(highestCases);
     const topFive = highestCases.splice(1, 5);
+    console.log(topFive);
     let regions = [];
     let values = [];
     topFive.map((datapoint) => {
@@ -95,13 +97,17 @@ const Dashboard = () => {
     setTopFiveDeaths({ categories: regions, values: values });
   }, [highestDeaths]);
 
-  useEffect(() => {
-    console.log("data: " + data);
-  }, [data]);
+  // useEffect(() => {
+  //   console.log("data: " + data);
+  // }, [data]);
 
   useEffect(() => {
     globalStats && console.log(globalStats);
   }, [globalStats]);
+
+  useEffect(() => {
+    console.log(topFiveCases);
+  }, [topFiveCases]);
 
   return (
     <Layout>
@@ -138,39 +144,30 @@ const Dashboard = () => {
             </Col>
             <Col className="gy-4">
               <div className="p-3 rounded bg-dark">
-                <p>Global Chart</p>
+                <p>Global Charts</p>
                 <div className="d-flex justify-content-center">
                   <PieChart
-                    labels={[
-                      "Active",
-                      "Critical",
-                      "Recovered",
-                      "Total Cases",
-                      "Total Deaths",
+                    labels={["Active", "Recovered"]}
+                    data={[
+                      globalStats.cases.active,
+                      globalStats.cases.recovered,
                     ]}
-                    data={[500, 5039, 8743, 434, 232]}
+                    colors={["#BD00FF", "#FFB800"]}
                   />
 
                   <PieChart
-                    labels={[
-                      "Active",
-                      "Critical",
-                      "Recovered",
-                      "Total Cases",
-                      "Total Deaths",
-                    ]}
-                    data={[500, 5039, 8743, 434, 2923]}
+                    labels={["New Cases", "New Deaths"]}
+                    data={[globalStats.cases.new, globalStats.deaths.new]}
+                    colors={["#FFFFFF", "#000000"]}
                   />
 
                   <PieChart
-                    labels={[
-                      "Active",
-                      "Critical",
-                      "Recovered",
-                      "Total Cases",
-                      "Total Deaths",
+                    labels={["Recovered", "Total Deaths"]}
+                    data={[
+                      globalStats.cases.recovered,
+                      globalStats.deaths.total,
                     ]}
-                    data={[500, 5039, 8743, 9034, 23]}
+                    colors={["#FFB800", "#FF0000"]}
                   />
                 </div>
               </div>
@@ -180,7 +177,7 @@ const Dashboard = () => {
           <Row>
             <Col className="gy-4" md="6">
               <div className="p-3 rounded bg-dark">
-                <p>Cases</p>
+                <p>Top 5 Regions Cases</p>
                 <div className="d-flex justify-content-center">
                   <BarChart
                     label={"Cases"}
@@ -193,7 +190,7 @@ const Dashboard = () => {
 
             <Col className="gy-4" md="6">
               <div className="p-3 rounded bg-dark">
-                <p>Deaths</p>
+                <p>Top 5 Regions Deaths</p>
                 <div className="d-flex justify-content-center">
                   <BarChart
                     label={"Deaths"}
